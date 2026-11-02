@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+Breaking changes:
+
+- JPEG blocks that use lossless coding (SOF3) fail to decode; JPEG decoding reads baseline, extended sequential, and progressive 8-bit streams
+
+Other changes:
+
+- decode JPEG blocks with `zune-jpeg` instead of `jpeg-decoder`: 144 256×256 tiles of a YCbCr orthophoto read in 21 ms instead of 57 ms on one thread, because `jpeg-decoder` started worker threads for every tile and converted YCbCr to RGB without SIMD
+
 ## 0.10.0 - 2026-10-31
 
 Breaking changes:
